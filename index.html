@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Clover</title>
+</head>
+   <style>
+        .kalkulator {
+            background-color: #65b877;
+            width: 300px; 
+            padding: 10px;
+            border: 2px solid #d7f7c4;
+            margin: 20px auto; 
+            text-align: center;
+            position: relative;
+        }
+
+        button {
+            background-color: rgb(194, 241, 140);
+            width: 50px; 
+            height: 50px; 
+            margin: 2px; 
+            font-size: 18px; 
+            border: 2px solid #42582e; 
+        }
+
+        #display {
+            width: 260px; 
+            height: 30px; 
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 18px;
+            border: 2px solid #4f5f40;
+        }
+        
+        img {
+            position: absolute;
+            top: 2px; 
+            left: 5px; 
+            width: 80px;
+            height: 80px;
+        }
+   </style>
+<body>
+    <div class="kalkulator">
+        <img src="clover.png" alt="Ikon Semanggi">
+        <h1>Kalkulator</h1>
+        <input type="text" id="display" readonly>
+        <br>
+        <button onclick="tampilkanValue('7')">7</button>
+        <button onclick="tampilkanValue('8')">8</button>
+        <button onclick="tampilkanValue('9')">9</button>
+        <button onclick="tampilkanValue('+')">+</button>
+        <br>
+        <button onclick="tampilkanValue('4')">4</button>
+        <button onclick="tampilkanValue('5')">5</button>
+        <button onclick="tampilkanValue('6')">6</button>
+        <button onclick="tampilkanValue('-')">-</button>
+        <br>
+        <button onclick="tampilkanValue('1')">1</button>
+        <button onclick="tampilkanValue('2')">2</button>
+        <button onclick="tampilkanValue('3')">3</button>
+        <button onclick="tampilkanValue('*')">x</button>
+        <br>
+        <button onclick="tampilkanValue('0')">0</button>
+        <button onclick="tampilkanValue('.')">.</button>
+        <button onclick="hapusSemuaCharacter()">C</button>
+        <button onclick="tampilkanValue('/')">/</button>
+        <br>
+        <button onclick="hitungPangkat()">x²</button>
+        <button onclick="hapusCharacterPersatu()">Del</button>
+        <button onclick="hitungPersen()">%</button>
+        <button onclick="hasilPerhitungan()">=</button>
+    </div>
+
+    <script>
+        function tampilkanValue(value) {
+            var display = document.getElementById("display");
+            display.value += value;
+        }
+
+        function hapusSemuaCharacter() {
+            var display = document.getElementById("display");
+            display.value = "";
+        }
+
+        function hapusCharacterPersatu() {
+            var display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+
+        function hitungPersen() {
+            var display = document.getElementById("display");
+            display.value = eval(display.value) / 100;
+        }
+
+        function hitungPangkat() {
+            var display = document.getElementById("display");
+            var currentValue = parseFloat(display.value);
+            var result = currentValue * currentValue; 
+            display.value = result;
+        }
+
+        function hasilPerhitungan() {
+            var display = document.getElementById("display");
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
